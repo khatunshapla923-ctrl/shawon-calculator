@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>আমার ক্যালকুলেটর</title>
+  <style>
+    body {
+      background: linear-gradient(135deg, #071b46, #493080);
+      color: white;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 30px;
+    }
+
+    input {
+      background: #f4f7ff;
+      color: #14264b;
+      font-size: 18px;
+      width: 80%;
+      max-width: 250px;
+      outline: none;
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      margin: 5px;
+      text-align: center;
+    }
+
+    button {
+      background: linear-gradient(135deg, #168cff, #7845ff);
+      color: white;
+      border: none;
+      padding: 13px 20px;
+      margin: 6px;
+      border-radius: 12px;
+      font-size: 18px;
+      cursor: pointer;
+      box-shadow: 0 4px 10px #0004;
+    }
+
+    button:active {
+      transform: scale(0.96);
+    }
+
+    #r {
+      color: #70ffbd;
+      font-size: 24px;
+      font-weight: bold;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🧮 আমার ক্যালকুলেটর</h1>
+
+  <input id="a" type="number" placeholder="প্রথম সংখ্যা">
+  <br><br>
+  <input id="b" type="number" placeholder="দ্বিতীয় সংখ্যা">
+  <br><br>
+
+  <button onclick="hisab('+')">যোগ +</button>
+  <button onclick="hisab('-')">বিয়োগ −</button>
+  <button onclick="hisab('*')">গুণ ×</button>
+  <button onclick="hisab('/')">ভাগ ÷</button>
+
+  <div id="r">উত্তর: 0</div>
+
+  <script>
+    function hisab(chinho) {
+      let a = parseFloat(document.getElementById('a').value);
+      let b = parseFloat(document.getElementById('b').value);
+      let uttor = 0;
+
+      if (isNaN(a) || isNaN(b)) {
+        document.getElementById('r').innerText = 'দয়া করে সঠিক সংখ্যা দিন';
+        return;
+      }
+
+      if (chinho === '+') uttor = a + b;
+      if (chinho === '-') uttor = a - b;
+      if (chinho === '*') uttor = a * b;
+      if (chinho === '/') {
+        uttor = b === 0 ? 'শূন্য দিয়ে ভাগ করা যায় না' : a / b;
+      }
+
+      document.getElementById('r').innerText = 'উত্তর: ' + uttor;
+    }
+  </script>
+
+</body>
+</html>
